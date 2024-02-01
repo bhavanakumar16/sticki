@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>Sticki</title>
+    <link rel="stylesheet" href="style.css" />
+    <script>
+      function getNote(){
+        if (localStorage.getItem('note')){
+          var note = localStorage.getItem('note');
+        } else{
+          var note = "Go ahead and type out your Sticki !";
+        }
+        document.getElementById('note').innerHTML = note;
+      }
+
+      function saveNote(id){
+        var note = document.getElementById('note').innerHTML;
+        localStorage.setItem("note",note);
+      }
+
+      function clearNote(){
+        clear : localStorage.clear();
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1>Sticki</h1>
+      <h4>Your very own sticky note</h4>
+    </header>
+    <section id="container"> 
+      <div id="note" contenteditable="true" onkeyup="saveNote(this.id)"></div>
+      <br>
+    </section>
+    <footer>
+      <a href="" class="clear" onclick="javascript:clearNote()">Clear Sticki</a>
+      <p>Sticki &copy; 2022</p>
+    </footer>
+    <script>
+      getNote();
+    </script>
+  </body>
+</html>
